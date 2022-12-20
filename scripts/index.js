@@ -18,9 +18,6 @@ tryPing();
 window.levelGroups = readLevelGroups();
 window.logger = new Logger();
 
-window.theory = readTheoryFromFile("./levels/theory/theory.json");
-console.log(window.theory);
-
 loadFont();
 
 let background = initBackground();

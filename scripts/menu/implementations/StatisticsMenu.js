@@ -62,7 +62,6 @@ export class StatisticsMenu extends Menu {
         for (let i = 0; i < types.length; i++) {
             let sType = types[i];
 
-            // console.log(sType.type);
             let stat = stats.get(sType.type);
 
             let percent = 0;

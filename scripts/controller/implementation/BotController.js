@@ -19,7 +19,6 @@ export class BotController extends Controller {
             return;
         }
 
-        console.log(this.getFactory().getLastNotHitTask().reward);
 
         let x = this.targetTask.x;
         let y = this.targetTask.y - 100;

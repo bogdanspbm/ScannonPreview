@@ -1,7 +1,7 @@
 import {Menu} from "../Menu.js";
 import {StatisticsMenu} from "./StatisticsMenu.js";
 import {SignInMenu} from "./SignInMenu.js";
-// import {readStatistics} from "../../utils/StatisticsUtils.js";
+import {GameStartMenu} from "./GameStartMenu.js"
 import {readStatisticsAdapter} from "../../adapter/StatisticsAdapter.js";
 import {TheoryMenu} from "./TheoryMenu.js";
 
@@ -25,7 +25,6 @@ export class MainMenu extends Menu {
         window.statistics = new Map();
         for (let i = 0; i < staticsMap.length; i++) {
             let stat = staticsMap[i];
-            // console.log(stat.type, stat);
             window.statistics.set(stat.type, stat);
         }
     }
@@ -137,10 +136,8 @@ export class MainMenu extends Menu {
         playButton.type = "button";
         playButton.addEventListener("click", function () {
             if (level.type !== "theory") {
-                document.getElementById("background").style.display = "none";
-                document.getElementById("ui").style.display = "none";
-                document.getElementById("canvas").style.display = "";
-                window.scene.loadNewGame(path);
+                let gameStartMenu = new GameStartMenu(menu.context, path);
+                gameStartMenu.generateMenu();
             } else {
                 menu.generateTheory(level);
             }

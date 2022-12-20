@@ -170,7 +170,6 @@ export class Task extends Drawable {
         for (let i = 0; i < this.types.length; i++) {
             let type = this.types[i];
             let stat = window.statistics.get(type);
-            console.log(window.statistics);
 
             if (value > 0) {
                 stat.incPosAmount();
