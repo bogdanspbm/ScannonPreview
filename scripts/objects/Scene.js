@@ -101,7 +101,9 @@ export class Scene {
         })
 
         this.fixedItems.forEach(value => {
-            value.tick();
+            if (this.withBot) {
+                value.tick();
+            }
         })
 
         this.drawItems();
@@ -111,7 +113,7 @@ export class Scene {
         this.doTick = doTick;
     }
 
-    loadNewGame(path) {
+    loadNewGame(path, withBot = false) {
         window.gamePaused = false;
         this.lastGamePath = path;
         this.factory = new TaskFactory(this, path);
@@ -119,8 +121,19 @@ export class Scene {
         this.hasGameStarted = false;
         this.items = [];
 
+        this.withBot = withBot;
+        this.setBotVisibility(withBot);
+
         let inGameMenu = new InGameMenu(this.uiContext);
         inGameMenu.generateMenu();
+    }
+
+    setBotVisibility(enable) {
+        this.fixedItems.forEach(value => {
+            if (value.type === "bot") {
+                value.setVisibility(enable);
+            }
+        })
     }
 
     pauseGame() {

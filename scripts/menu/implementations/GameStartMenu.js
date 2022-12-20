@@ -28,35 +28,36 @@ export class GameStartMenu extends Menu {
         topic.innerHTML = "Scannon";
         panel.appendChild(topic);
 
-        this.login = document.createElement("input");
-        this.login.setAttribute("type", "email");
-        this.login.setAttribute("id", "login");
-        this.login.setAttribute("class", "input_scannon");
-        this.login.setAttribute("placeholder", "Login");
-        panel.appendChild(this.login);
-
-        this.password = document.createElement("input");
-        this.password.setAttribute("type", "password");
-        this.password.setAttribute("id", "password");
-        this.password.setAttribute("class", "input_scannon");
-        this.password.setAttribute("placeholder", "Password");
-        panel.appendChild(this.password);
 
         this.button = document.createElement("div");
         this.button.setAttribute("class", "small_button");
         this.button.setAttribute("style", "align-self: center; height: 60px; margin-top: 20px;font-size: 30px;");
-        this.button.innerHTML = "START";
-        this.button.onclick = this.startGame;
+        this.button.innerHTML = "START SINGLE";
+        this.button.onclick = this.startGameSingle;
+        panel.appendChild(this.button);
+
+        this.button = document.createElement("div");
+        this.button.setAttribute("class", "small_button");
+        this.button.setAttribute("style", "align-self: center; height: 60px; margin-top: 20px;font-size: 30px;");
+        this.button.innerHTML = "START WITH BOT";
+        this.button.onclick = this.startGameWithBot;
 
         panel.appendChild(this.button);
 
         this.context.appendChild(content);
     }
 
-    startGame() {
+    startGameSingle() {
         document.getElementById("background").style.display = "none";
         document.getElementById("ui").style.display = "none";
         document.getElementById("canvas").style.display = "";
         window.scene.loadNewGame(window.lastPath);
+    }
+
+    startGameWithBot() {
+        document.getElementById("background").style.display = "none";
+        document.getElementById("ui").style.display = "none";
+        document.getElementById("canvas").style.display = "";
+        window.scene.loadNewGame(window.lastPath, true);
     }
 }

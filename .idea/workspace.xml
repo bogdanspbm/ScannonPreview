@@ -129,7 +129,7 @@
       <workItem from="1671387801557" duration="415000" />
       <workItem from="1671449118609" duration="1278000" />
       <workItem from="1671525826287" duration="98000" />
-      <workItem from="1671550315100" duration="2310000" />
+      <workItem from="1671550315100" duration="3527000" />
     </task>
     <servers />
   </component>
@@ -156,20 +156,16 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/scripts/menu/implementations/MainMenu.js</url>
-          <line>9</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/scripts/menu/implementations/SignInMenu.js</url>
-          <line>12</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/scripts/objects/Scene.js</url>
-          <line>114</line>
+          <line>116</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scripts/objects/implementations/Cannon.js</url>
+          <line>65</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -23,6 +23,9 @@ export class Cannon extends Drawable {
     }
 
     setController(controller) {
+
+        this.type = controller;
+
         if (controller === "player") {
             this.controller = new PlayerController(this);
         }
@@ -60,6 +63,10 @@ export class Cannon extends Drawable {
     }
 
     draw() {
+        if (!this.visibility) {
+            return;
+        }
+
         try {
             drawImage(this.context, this.image, this.x, this.y, this.width, this.height, this.rotation + this.relativeRotation);
         } catch (e) {

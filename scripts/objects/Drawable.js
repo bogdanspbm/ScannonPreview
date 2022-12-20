@@ -3,10 +3,15 @@ export class Drawable {
         this.x = x;
         this.y = y;
         this.context = context;
+        this.visibility = true;
 
         this.setSize(64, 64);
     }
 
+
+    setVisibility(enable) {
+        this.visibility = enable;
+    }
 
     setSize(x, y) {
         this.width = x;
