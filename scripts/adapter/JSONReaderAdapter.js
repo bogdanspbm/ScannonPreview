@@ -1,6 +1,5 @@
 import {STask} from "../structures/STask.js";
 import {SType} from "../structures/SType.js";
-import {SStatistic} from "../structures/SStatistic.js";
 import {SLevel} from "../structures/SLevel.js";
 import {SGroup} from "../structures/SGroup.js";
 import {STheory} from "../structures/STheory.js";
@@ -63,10 +62,10 @@ export function readTaskFromFile(path) {
     return result;
 }
 
-export function readLevelFromFile(path) {
+export function readLevelFromFile(path, local = false) {
     let result = new SLevel();
     let request = new XMLHttpRequest();
-    if(window.pingBd){
+    if(window.pingBd && !local){
         path = "http://" + window.ip + ":" + window.port + path;
         request.open("GET", path, false);
         request.onreadystatechange = function () {
@@ -130,6 +129,10 @@ export function readGroupFromFile(path) {
 
                     result.setName(json.name);
                     result.setIconPath(json.icon);
+
+                    let levelPath = "./levels/levels/level_theory.json";
+                    let sLevel = readLevelFromFile(levelPath, true);
+                    result.addLevel(sLevel);
 
                     for (let i = 0; i < levels.length; i++) {
                         let node = levels[i];
