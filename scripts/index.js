@@ -6,14 +6,18 @@ import {
     readBackendConfigFromFile,
     readGroupFromFile,
     readGroupPathsFromConfig, readTheoryFromFile
-} from "./utils/JSONReader.js";
+} from "./adapter/JSONReaderAdapter.js";
+import {
+    tryPing
+} from "./adapter/AuthAdapter.js";
 import {Logger} from "./objects/Logger.js";
+
+readBackendConfigFromFile("./config/backend.json");
+tryPing();
 
 window.levelGroups = readLevelGroups();
 window.logger = new Logger();
 
-
-readBackendConfigFromFile("./config/backend.json");
 window.theory = readTheoryFromFile("./levels/theory/theory.json");
 console.log(window.theory);
 
@@ -81,7 +85,15 @@ function loadFont() {
 
 function readLevelGroups() {
     let result = [];
-    let groupPaths = readGroupPathsFromConfig("./levels/game/game_config.json");
+    let path;
+    if (window.pingBd){
+        path = "http://" + window.ip + ":" + window.port + "/groups";
+        window.pingBd = true;
+    } else {
+        path = "./levels/game/game_config.json";
+        window.pingBd = false;
+    }
+    let groupPaths = readGroupPathsFromConfig(path);
     for (let i = 0; i < groupPaths.length; i++) {
         let path = groupPaths[i];
         result.push(readGroupFromFile(path));

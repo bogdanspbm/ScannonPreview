@@ -13,7 +13,6 @@ export function readStatistics() {
                 let content = request.responseText;
                 let json = JSON.parse(content);
                 let statistics = json.array;
-
                 for (let i = 0; i < statistics.length; i++) {
                     let node = statistics[i];
                     let sStatistic = new SStatistic();

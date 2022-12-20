@@ -23,8 +23,6 @@ export class MainMenu extends Menu {
     updateStat() {
         let staticsMap = readStatisticsAdapter();
         window.statistics = new Map();
-        console.log(123333);
-        console.log(staticsMap);
         for (let i = 0; i < staticsMap.length; i++) {
             let stat = staticsMap[i];
             // console.log(stat.type, stat);

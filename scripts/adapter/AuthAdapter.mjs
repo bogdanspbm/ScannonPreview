@@ -1,4 +1,4 @@
-import {getToken, tryLogin} from "../utils/AuthUtils.js";
+import {getToken, tryLogin} from "../utils/AuthUtils.mjs";
 
 
 // export function tryPing(){
@@ -42,20 +42,18 @@ export function tryPing() {
     try {
         result = request.send();
         console.log("True");
-        window.pingBd = true;
         return result;
     } catch (e) {
-        window.pingBd = false;
         console.log("False");
         return false;
     }
 }
 
 
-export function tryLoginAdapter(token) {
+export function tryLoginAdapter(token){
     let ping = tryPing();
     let loginResult;
-    if (ping === undefined) {
+    if (ping === undefined){
         loginResult = tryLogin(token);
         window.pingBd = true;
     } else {

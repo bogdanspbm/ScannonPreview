@@ -1,5 +1,5 @@
 import {Menu} from "../Menu.js";
-import {readTheoryFromFile} from "../../utils/JSONReader.js";
+import {readTheoryFromFile} from "../../adapter/JSONReaderAdapter.js";
 
 export class TheoryMenu extends Menu {
     constructor(context) {

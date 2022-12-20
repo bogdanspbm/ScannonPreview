@@ -1,5 +1,5 @@
 import {Menu} from "../Menu.js";
-import {readExpressionTypes} from "../../utils/JSONReader.js";
+import {readExpressionTypes} from "../../adapter/JSONReaderAdapter.js";
 
 export class StatisticsMenu extends Menu {
     constructor(context) {
