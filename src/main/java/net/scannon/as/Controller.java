@@ -100,6 +100,12 @@ public class Controller {
         return array.toString();
     }
 
+    @GetMapping("/groups/{id}")
+    public String getGroups(@PathVariable(value = "id") int id) {
+        JSONObject array = sequenceAdapter.getGroup(id);
+        return array.toString();
+    }
+
     @GetMapping("/{token}")
     public String getUserByToken(@PathVariable(value = "token") String token) {
         JSONObject json = usersAdapter.getUserByKey(token);

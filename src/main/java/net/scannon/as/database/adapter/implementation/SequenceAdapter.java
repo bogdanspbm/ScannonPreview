@@ -110,4 +110,33 @@ public class SequenceAdapter extends DatabaseAdapter {
         return out;
     }
 
+    public JSONObject getGroup(int id) {
+
+        Connection connection = database.getConnection();
+
+        try (Statement statement = connection.createStatement()) {
+            String query = "SELECT * FROM \"group\" WHERE id = " + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String icon = resultSet.getString("icon");
+                Array array = resultSet.getArray("levels");
+
+                JSONObject object = new JSONObject();
+                object.put("id", id);
+                object.put("name", name);
+                object.put("icon", icon);
+                object.put("levels", array);
+
+                return object;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getStackTrace());
+        }
+
+        return new JSONObject();
+    }
+
 }
